@@ -1,0 +1,119 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    Layout = null;
+    var title = ViewData["Title"] ?? "TropiNails Pro";
+    var usuario = HttpContextAccessor.HttpContext?.Session.GetString("UsuarioNombre");
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@title - TropiNails Pro</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- Ícono del sitio -->
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/128/929/929566.png" />
+
+    <style>
+        .text-pink {
+            color: #e91e63 !important;
+        }
+    </style>
+</head>
+<body class="bg-light" style="background: linear-gradient(to right, #fff5f7, #fce3ec);">
+
+    <!-- NAVBAR SUPERIOR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
+        <div class="container">
+            <a href="/Home/Dashboard" class="navbar-brand d-flex align-items-center text-pink" style="text-decoration: none;">
+                <img src="https://i.pinimg.com/736x/4e/b2/00/4eb2009165ccd469ddd050e234764890.jpg" alt="Logo" width="40" class="me-2 rounded-circle" />
+                <span class="fw-bold text-pink">TropiNails Pro</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @if (!string.IsNullOrEmpty(usuario))
+                    {
+                        <li class="nav-item">
+                            <span class="nav-link text-success">👤 @usuario</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Citas" asp-action="Index">Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ModelosUnas" asp-action="Index">Modelos</a>
+                        </li>
+                        @if (usuario == "Arturito")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Pagos" asp-action="Lista">💰 Pagos</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" asp-controller="Auth" asp-action="Logout">Salir</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Auth" asp-action="Login">Iniciar Sesión</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MENSAJES FLASH -->
+    <div class="container">
+        @if (TempData["Mensaje"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Mensaje"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+        }
+    </div>
+
+    <!-- CONTENIDO CENTRAL -->
+    <div class="container bg-white bg-opacity-75 p-4 rounded shadow-lg mb-4">
+        @RenderBody()
+    </div>
+
+    <!-- BOTÓN FLOTANTE DE PAGO -->
+    @if (!string.IsNullOrEmpty(usuario))
+    {
+        <div style="position: fixed; top: 20px; right: 20px; z-index: 999;">
+            <a asp-controller="Pagos" asp-action="InicioPago" title="Pagar ahora">
+                <img src="https://cdn-icons-png.flaticon.com/128/349/349221.png" alt="Pagar con tarjeta Visa" width="50" style="cursor: pointer;" />
+            </a>
+        </div>
+    }
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- Scripts por vista -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,20 @@
+@model TropiNailsPro.Models.Producto
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>¿Seguro que deseas eliminar este producto?</h3>
+
+<div>
+    <h4>@Model.Nombre</h4>
+    <p>@Model.Descripcion</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

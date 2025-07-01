@@ -1,0 +1,48 @@
+@model TropiNailsPro.Models.Cita
+
+@{
+    ViewData["Title"] = "Agendar Nueva Cita";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="shadow p-4 rounded bg-light">
+    <div class="mb-3">
+        <label asp-for="NombreClienta" class="form-label fw-bold">Nombre de la Clienta</label>
+        <input asp-for="NombreClienta" class="form-control" placeholder="Ej. Ana Martinez" />
+        <span asp-validation-for="NombreClienta" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Fecha" class="form-label fw-bold">Fecha</label>
+        <input asp-for="Fecha" type="date" class="form-control" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Hora" class="form-label fw-bold">Hora</label>
+        <input asp-for="Hora" type="time" class="form-control" />
+        <span asp-validation-for="Hora" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Servicio" class="form-label fw-bold">Servicio</label>
+        <input asp-for="Servicio" class="form-control" placeholder="Ej. Uñas Acrílicas, Decoración, etc." />
+        <span asp-validation-for="Servicio" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NotasAdicionales" class="form-label fw-bold">Notas Adicionales</label>
+        <textarea asp-for="NotasAdicionales" class="form-control" rows="3" placeholder="Ej. Prefiere colores pastel, trae diseño guardado..."></textarea>
+        <span asp-validation-for="NotasAdicionales" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">💅 Guardar Cita</button>
+        <a asp-action="Index" class="btn btn-secondary">↩ Volver</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

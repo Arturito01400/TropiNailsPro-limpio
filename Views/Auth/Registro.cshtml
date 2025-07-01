@@ -1,0 +1,135 @@
+@{
+    ViewData["Title"] = "Registro";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro - TropiNails Pro</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffe0f0 0%, #fbefff 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-wrapper {
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-radius: 25px;
+            overflow: hidden;
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            min-height: 550px;
+        }
+
+        .register-form {
+            padding: 50px 45px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #222;
+        }
+
+        h3 {
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ff69b4;
+        }
+
+        input.form-control {
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 1.8px solid #ff69b4;
+            transition: all 0.3s ease;
+        }
+
+        input.form-control:focus {
+            border-color: #ff3399;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+            outline: none;
+        }
+
+        .btn-pink {
+            border-radius: 15px;
+            padding: 12px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            background: #ff69b4;
+            border: none;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+        .btn-pink:hover {
+            background: #ff3399;
+        }
+
+        .link-login {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .link-login a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link-login a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-weight: 700;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-wrapper">
+        <div class="register-form">
+            <h3>Crear Cuenta</h3>
+
+            <form asp-controller="Auth" asp-action="Registro" method="post">
+                <input type="text" name="Nombre" class="form-control mb-3" placeholder="Nombre completo" required />
+                <input type="email" name="Email" class="form-control mb-3" placeholder="Correo electrónico" required />
+                <input type="text" name="UsuarioLogin" class="form-control mb-3" placeholder="Nombre de usuario" required />
+                <input type="password" name="Clave" class="form-control mb-3" placeholder="Contraseña" required />
+
+                <div class="d-grid mt-2 mb-3">
+                    <button type="submit" class="btn btn-pink">Registrarme</button>
+                </div>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="error-message">@ViewBag.Error</div>
+                }
+
+                <div class="link-login">
+                    ¿Ya tienes cuenta? <a asp-controller="Auth" asp-action="Login">Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

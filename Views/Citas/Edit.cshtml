@@ -1,0 +1,36 @@
+@model TropiNailsPro.Models.Cita
+@{
+    ViewData["Title"] = "Editar Cita";
+}
+
+<h2 class="mb-4">@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="NombreClienta" class="form-label"></label>
+        <input asp-for="NombreClienta" class="form-control" />
+        <span asp-validation-for="NombreClienta" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Fecha" class="form-label"></label>
+        <input asp-for="Fecha" type="date" class="form-control" />
+        <span asp-validation-for="Fecha" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Hora" class="form-label"></label>
+        <input asp-for="Hora" type="time" class="form-control" />
+        <span asp-validation-for="Hora" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Servicio" class="form-label"></label>
+        <input asp-for="Servicio" class="form-control" />
+        <span asp-validation-for="Servicio" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="NotasAdicionales" class="form-label"></label>
+        <textarea asp-for="NotasAdicionales" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</form>

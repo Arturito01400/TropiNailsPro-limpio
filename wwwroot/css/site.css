@@ -1,0 +1,121 @@
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('https://i.pinimg.com/736x/4e/b2/00/4eb2009165ccd469ddd050e234764890.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: #fff;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.container, .card, form {
+  background-color: rgba(255, 255, 255, 0.92); /* Blanco translúcido */
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+/* Estilo de botones */
+.btn {
+  border-radius: 12px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.95;
+  transform: scale(1.03);
+}
+
+/* Encabezados oscuros para buena visibilidad */
+h1, h2, h3, h4, h5 {
+  color: #202020;
+}
+
+/* Placeholder bien alineado en formularios flotantes */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Sombras de enfoque */
+.btn:focus, .btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #f28ecb;
+}
+
+/* Mejoras para navbar y enlaces */
+.navbar {
+  border-bottom: 2px solid #f5b6e1;
+}
+
+.nav-link {
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #dc0073 !important;
+}
+
+/* Animación de fade in para el contenido */
+.container,
+.card,
+form {
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Botón flotante */
+.floating-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.floating-button img {
+  width: 50px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.floating-button img:hover {
+  transform: scale(1.1);
+}

@@ -1,0 +1,45 @@
+@model IEnumerable<TropiNailsPro.Models.Cita>
+
+@{
+    ViewData["Title"] = "Listado de Citas";
+}
+
+<h2 class="mb-4">Citas Agendadas</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nueva Cita</a>
+</p>
+
+<table class="table table-bordered table-hover shadow">
+    <thead class="table-dark">
+        <tr>
+            <th>Nombre Clienta</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Servicio</th>
+            <th>Notas</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.NombreClienta</td>
+        <td>@item.Fecha.ToString("dd/MM/yyyy")</td>
+        <td>@item.Hora</td>
+        <td>@item.Servicio</td>
+        <td>@item.NotasAdicionales</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+
+            <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="display:inline;" onsubmit="return confirm('¿Deseas eliminar esta cita?');">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+@model IEnumerable<TropiNailsPro.Models.PagoEfectivo>
+
+@{
+    ViewData["Title"] = "Pagos en Efectivo";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Registrar Pago en Efectivo</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th>Notas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var pago in Model)
+        {
+            <tr>
+                <td>@pago.NombreCliente</td>
+                <td>@pago.Monto.ToString("C")</td>
+                <td>@pago.FechaPago.ToShortDateString()</td>
+                <td>@pago.Notas</td>
+            </tr>
+        }
+    </tbody>
+</table>

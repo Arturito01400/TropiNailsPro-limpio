@@ -1,0 +1,60 @@
+@model TropiNailsPro.Models.ModeloUnas
+
+@{
+    ViewData["Title"] = "Confirmar Modelo";
+}
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h3 class="mb-4 text-center text-primary">✨ Confirmar Modelo Elegido</h3>
+
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center mb-3 mb-md-0">
+                <img src="@Model.ImagenFinalRuta" 
+                     class="img-fluid rounded shadow border border-2 border-primary" 
+                     alt="@Model.Nombre" style="max-height: 300px;" />
+            </div>
+            <div class="col-md-6">
+                <h4 class="fw-bold">@Model.Nombre</h4>
+                <p class="text-muted">@Model.Descripcion</p>
+                <p><strong>💵 Precio:</strong> RD$ @Model.Precio.ToString("N2")</p>
+
+                <div class="mb-3">
+                    <label for="nombreClienta" class="form-label fw-bold">👩 Nombre</label>
+                    <input type="text" id="nombreClienta" class="form-control" placeholder="Ingresa tu nombre" />
+                </div>
+
+                <!-- Botón de PayPal -->
+                <div id="paypal-button-container" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=ATAyJ_3URLzxfsEOZDfxqs5y2aC8jQye9B7V4nCq6NNx3DkdvzJewSkk-jfzwvbUTjTNvag9wfZA7_RP&currency=USD"></script>
+
+<script>
+    paypal.Buttons({
+        createOrder: function (data, actions) {
+            const monto = parseFloat("@Model.Precio").toFixed(2);
+            return actions.order.create({
+                purchase_units: [{
+                    amount: { value: monto }
+                }]
+            });
+        },
+        onApprove: function (data, actions) {
+            const nombre = document.getElementById("nombreClienta").value.trim();
+            if (!nombre) {
+                alert("⚠️ Por favor, ingresa tu nombre antes de continuar.");
+                return actions.reject();
+            }
+
+            return actions.order.capture().then(function (details) {
+                alert("✅ Gracias, " + nombre + ". Tu pago fue procesado con éxito.");
+                window.location.href = "/Pagos/Confirmacion";
+            });
+        }
+    }).render('#paypal-button-container');
+</script>

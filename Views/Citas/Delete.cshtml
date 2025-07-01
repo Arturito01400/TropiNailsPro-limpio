@@ -1,0 +1,19 @@
+@model TropiNailsPro.Models.Cita
+@{
+    ViewData["Title"] = "Eliminar Cita";
+}
+
+<h2 class="mb-3 text-danger">¿Estás seguro de eliminar esta cita?</h2>
+
+<div class="alert alert-warning">
+    <p><strong>Cliente:</strong> @Model.NombreClienta</p>
+    <p><strong>Fecha:</strong> @Model.Fecha.ToShortDateString()</p>
+    <p><strong>Hora:</strong> @Model.Hora</p>
+    <p><strong>Servicio:</strong> @Model.Servicio</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

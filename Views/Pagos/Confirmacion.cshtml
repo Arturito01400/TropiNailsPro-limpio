@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Pago Confirmado";
+}
+
+<div class="container text-center mt-5">
+    <h2 class="text-success">@ViewBag.Mensaje ?? "¡Pago confirmado con éxito!"</h2>
+    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-primary mt-4">
+        Volver al Inicio
+    </a>
+</div>
+

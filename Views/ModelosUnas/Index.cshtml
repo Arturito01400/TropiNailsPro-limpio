@@ -1,0 +1,68 @@
+@model IEnumerable<TropiNailsPro.Models.ModeloUnas>
+
+@{
+    ViewData["Title"] = "Modelos de Uñas";
+    var usuario = ViewBag.UsuarioNombre as string;
+}
+
+<h2 class="text-center text-white mb-4">@ViewData["Title"]</h2>
+
+<!-- Mensaje temporal -->
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success text-center fw-bold">
+        @TempData["Mensaje"]
+    </div>
+}
+
+<!-- Botón agregar visible solo para Arturito -->
+@if (usuario == "Arturito")
+{
+    <div class="text-center mb-4">
+        <a asp-action="Create" class="btn btn-success px-4">➕ Agregar Nuevo Modelo</a>
+    </div>
+}
+
+<!-- Tarjetas de modelos -->
+<div class="row justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-0">
+                <img src="@item.ImagenUrl" class="card-img-top" alt="Modelo de uñas"
+                     style="height: 250px; object-fit: cover;" />
+
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">@item.Nombre</h5>
+                    <p class="card-text text-muted">@item.Descripcion</p>
+                    <p class="card-text"><strong>RD$ @item.Precio.ToString("N2")</strong></p>
+
+                    <div class="d-grid gap-2">
+                        <!-- Solo Arturito puede editar/eliminar -->
+                        @if (usuario == "Arturito")
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm">✏️ Editar</a>
+
+                            <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline"
+                                  onsubmit="return confirm('¿Estás seguro de eliminar este modelo?');">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">🗑️ Eliminar</button>
+                            </form>
+                        }
+
+                        <!-- Disponible para todas las clientas -->
+                        <a asp-action="Elegir" asp-route-id="@item.Id" class="btn btn-primary btn-sm">✨ Elegir este Modelo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Confirmación por WhatsApp -->
+<div class="text-center mt-5">
+    <a class="btn btn-lg btn-success"
+       href="https://wa.me/18098756295?text=Hola%20soy%20una%20clienta%20y%20acabo%20de%20realizar%20una%20transferencia%20para%20mi%20servicio%20en%20TropiNails%20Pro"
+       target="_blank" rel="noopener noreferrer">
+        💳 Confirmar Pago por WhatsApp
+    </a>
+</div>

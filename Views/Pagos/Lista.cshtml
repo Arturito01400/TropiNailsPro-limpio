@@ -1,0 +1,48 @@
+@model List<TropiNailsPro.Models.PagoTransferencia>
+
+@{
+    ViewData["Title"] = "Pagos Realizados";
+}
+
+<h2 class="text-primary mb-4">@ViewData["Title"]</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Cliente</th>
+            <th>Banco/Origen</th>
+            <th>Monto</th>
+            <th>Referencia</th>
+            <th>Fecha</th>
+            <th>Comprobante</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pago in Model)
+        {
+            <tr>
+                <td>@pago.NombreCliente</td>
+                <td>@pago.BancoOrigen</td>
+                <td>RD$ @pago.Monto.ToString("0.00")</td>
+                <td>@pago.NumeroReferencia</td>
+                <td>@pago.FechaPago.ToString("dd/MM/yyyy hh:mm tt")</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(pago.ImagenComprobante))
+                    {
+                        <a href="@pago.ImagenComprobante" target="_blank" class="btn btn-sm btn-outline-primary">
+                            Ver Imagen
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">—</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Dashboard" asp-action="Index" class="btn btn-secondary mt-4">
+    ⬅ Volver al inicio
+</a>

@@ -1,0 +1,84 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recuperar Contraseña - TropiNails Pro</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fceabb,rgb(8, 248, 0));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .recovery-container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 25px;
+            color: rgb(0, 99, 248);
+        }
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: rgb(194, 248, 0);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #e0a100;
+        }
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            color: green;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="recovery-container">
+        <h2>Recuperar Contraseña</h2>
+        <form asp-controller="Auth" asp-action="RecuperarClave" method="post">
+            <input type="text" name="Identificador" placeholder="Correo electrónico o Teléfono" required />
+            <input type="submit" value="Enviar" />
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+            <div class="message">@ViewBag.Message</div>
+        }
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-message">@ViewBag.Error</div>
+        }
+    </div>
+</body>
+</html>

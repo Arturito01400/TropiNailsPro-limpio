@@ -1,0 +1,82 @@
+@model TropiNailsPro.Models.ModeloUnas
+
+@{
+    ViewData["Title"] = "Editar Modelo de Uñas";
+}
+
+<h2 class="text-warning text-center">@ViewData["Title"]</h2>
+
+<div class="card shadow p-4 mt-3">
+    <form asp-action="Edit" enctype="multipart/form-data" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label">Nombre del Modelo</label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Descripcion" class="form-label">Descripción</label>
+            <textarea asp-for="Descripcion" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Precio" class="form-label">Precio</label>
+            <input asp-for="Precio" type="number" step="0.01" class="form-control" />
+            <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImagenUrl" class="form-label">URL de la Imagen (Pinterest, WhatsApp, etc.)</label>
+            <input asp-for="ImagenUrl" id="ImagenUrl" class="form-control" placeholder="https://..." oninput="mostrarPreview()" />
+            <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImagenArchivo" class="form-label">O Subir Nueva Imagen</label>
+            <input asp-for="ImagenArchivo" id="ImagenArchivo" type="file" class="form-control" accept="image/*" onchange="mostrarPreview()" />
+            <span asp-validation-for="ImagenArchivo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Vista previa de la imagen</label>
+            <div>
+                <img id="previewImagen" src="@Model.ImagenFinalRuta" alt="Previsualización" class="img-thumbnail" style="max-height: 250px; display: @(string.IsNullOrEmpty(Model.ImagenFinalRuta) ? "none" : "block")" />
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-success px-4">💾 Guardar Cambios</button>
+            <a asp-action="Index" class="btn btn-secondary ms-3">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function mostrarPreview() {
+            const inputUrl = document.getElementById("ImagenUrl");
+            const inputArchivo = document.getElementById("ImagenArchivo");
+            const imgPreview = document.getElementById("previewImagen");
+
+            if (inputArchivo && inputArchivo.files.length > 0) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = "block";
+                };
+                reader.readAsDataURL(inputArchivo.files[0]);
+            } else if (inputUrl && inputUrl.value.startsWith("http")) {
+                imgPreview.src = inputUrl.value;
+                imgPreview.style.display = "block";
+            } else {
+                imgPreview.style.display = "none";
+                imgPreview.src = "#";
+            }
+        }
+    </script>
+
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var usuario = ViewBag.UsuarioNombre as string;
+}
+
+<style>
+    body {
+        background: linear-gradient(to right, #ffe5ec, #e0f7fa);
+    }
+
+    .card {
+        border: none;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+    }
+
+    .dashboard-header {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2.2rem;
+        color: #333;
+    }
+
+    .dashboard-header p {
+        color: #666;
+    }
+
+    .logout-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+</style>
+
+<div class="logout-btn">
+    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+</div>
+
+<div class="dashboard-header">
+    <h1>👋 ¡Bienvenida, @usuario!</h1>
+    <p>Selecciona una opción para comenzar.</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">📅 Gestionar Citas</h5>
+                <p class="card-text">Ver, crear y editar citas de tus clientas.</p>
+                <a asp-controller="Citas" asp-action="Index" class="btn btn-primary">Ir a Citas</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">💅 Modelos de Uñas</h5>
+                <p class="card-text">Explora y administra tus diseños de uñas.</p>
+                <a asp-controller="ModelosUnas" asp-action="Index" class="btn btn-success">Ver Modelos</a>
+            </div>
+        </div>
+    </div>
+
+    @if (usuario == "Arturito")
+    {
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">💰 Pagos Recibidos</h5>
+                    <p class="card-text">Consulta pagos por transferencia y PayPal.</p>
+                    <a asp-controller="Pagos" asp-action="Lista" class="btn btn-outline-primary">Ver Pagos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-info">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📦 Inventario</h5>
+                    <p class="card-text">Administra productos, cantidades y precios.</p>
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-info">Ver Inventario</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
