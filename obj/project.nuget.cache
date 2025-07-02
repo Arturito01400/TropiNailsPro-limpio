@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P/38bNxk8UA=",
+  "dgSpecHash": "sAb0HulcM/8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arturo\\TropiNailsPro\\TropiNailsPro\\TropiNailsPro.csproj",
+  "projectFilePath": "C:\\Users\\Arturo\\TropiNailsPro\\TropiNailsPro\\TropiNailsPro-limpio\\TropiNailsPro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arturo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Arturo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
