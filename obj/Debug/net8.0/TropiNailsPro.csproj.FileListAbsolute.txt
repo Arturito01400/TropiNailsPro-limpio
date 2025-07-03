@@ -100,3 +100,4 @@ C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\TropiNailsPro.pdb
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\TropiNailsPro.genruntimeconfig.cache
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\ref\TropiNailsPro.dll
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\TropiNailsPro.sourcelink.json
