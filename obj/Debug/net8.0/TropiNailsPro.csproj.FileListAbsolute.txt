@@ -101,3 +101,15 @@ C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\TropiNailsPro.genruntimeconfig.cache
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\ref\TropiNailsPro.dll
 C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\obj\Debug\net8.0\TropiNailsPro.sourcelink.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\web.config
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\web.config
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\appsettings.Development.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\appsettings.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\appsettings.Development.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\appsettings.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\TropiNailsPro.deps.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\TropiNailsPro.runtimeconfig.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\publicar\TropiNailsPro.staticwebassets.endpoints.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\TropiNailsPro.deps.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\TropiNailsPro.runtimeconfig.json
+C:\Users\Arturo\TropiNailsPro\TropiNailsPro\TropiNailsPro-limpio\bin\Debug\net8.0\publicar\TropiNailsPro.staticwebassets.endpoints.json

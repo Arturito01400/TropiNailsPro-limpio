@@ -34,16 +34,22 @@ namespace TropiNailsPro.Data
             modelBuilder.Entity<PagoTransferencia>().ToTable("PagosTransferencia");
             modelBuilder.Entity<Gasto>().ToTable("Gastos");
 
-            // ✅ Índices únicos condicionales
+            // ✅ Restricciones únicas (sin filtro porque estás usando MySQL)
             modelBuilder.Entity<Usuario>()
                 .HasIndex(u => u.Email)
-                .IsUnique()
-                .HasFilter("[Email] IS NOT NULL");
+                .IsUnique();
 
             modelBuilder.Entity<Usuario>()
                 .HasIndex(u => u.Telefono)
-                .IsUnique()
-                .HasFilter("[Telefono] IS NOT NULL");
+                .IsUnique();
+
+            // 🛡️ Relaciones (si las tienes definidas)
+            // Por ejemplo: cada cita pertenece a un usuario
+            // modelBuilder.Entity<Cita>()
+            //     .HasOne(c => c.Usuario)
+            //     .WithMany(u => u.Citas)
+            //     .HasForeignKey(c => c.UsuarioId)
+            //     .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

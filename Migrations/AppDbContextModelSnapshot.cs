@@ -280,12 +280,10 @@ namespace TropiNailsPro.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
-                        .IsUnique()
-                        .HasFilter("[Email] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("Telefono")
-                        .IsUnique()
-                        .HasFilter("[Telefono] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Usuarios", (string)null);
                 });
