@@ -13,24 +13,25 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout del código
+        uses: actions/checkout@v4
 
-      - name: Set up .NET Core
+      - name: Configurar .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
-      - name: Build with dotnet
+      - name: Compilar la aplicación
         run: dotnet build --configuration Release
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o myapp
+      - name: Publicar con dotnet
+        run: dotnet publish -c Release -o "${{ github.workspace }}/myapp"
 
-      - name: Upload artifact for deployment job
+      - name: Subir artefactos para despliegue
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: myapp
+          path: ${{ github.workspace }}/myapp
 
   deploy:
     runs-on: windows-latest
@@ -40,22 +41,22 @@ jobs:
       contents: read
 
     steps:
-      - name: Download artifact from build job
+      - name: Descargar artefactos
         uses: actions/download-artifact@v4
         with:
           name: .net-app
 
-      - name: Login to Azure
+      - name: Login a Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_15F6FF31AAC24F78BA4F85F3BD852564 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_1ED35AE50E2D487E80AA042C5F71238E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_B0108D8F3E2A4F9FB9500D6104EDEFBF }}
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy to Azure Web App
+      - name: Desplegar a Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'tropinailspro'
           slot-name: 'Production'
-          package: ./myapp
+          package: .
