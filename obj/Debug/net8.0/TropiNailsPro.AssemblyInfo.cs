@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TropiNailsPro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c514eed5af19de4cc34bf52895799a13e883159e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e136bf826782c950ca20e8e8833947ccc9b1085")]
 [assembly: System.Reflection.AssemblyProductAttribute("TropiNailsPro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TropiNailsPro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
